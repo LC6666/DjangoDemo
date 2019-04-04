@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import unittest
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest2(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome()
@@ -11,7 +11,7 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_can_start_a_list_and_retrieve_it_later(self):
+    def test_can_start_a_list_and_retrieve_it_later2(self):
         self.browser.get('http://127.0.0.1:8000')
 
         self.assertIn('Django',self.browser.title)
@@ -34,3 +34,6 @@ class NewVisitorTest(unittest.TestCase):
             any(row.text =='1:Buy peacock feathers' for row in rows)
         )
 
+
+if __name__ == '__main__':
+    unittest.main(warnings='ignore')
