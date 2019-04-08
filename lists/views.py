@@ -69,15 +69,19 @@ from lists.models import Item,List
 #     return render(request,'home.html')
 
 # ======================test12=======================
-def view_list(request):
-    items = Item.objects.all()
+def view_list(request,list_id):
+    print('&&&&&&&&&&view_list&&&&&&&&&&&&')
+    list_ = List.objects.get(id=list_id)
+    items = Item.objects.filter(list=list_)
     return render(request, 'list.html', {"items": items})
 
 # ======================test14=======================
 def new_list(request):
+    print('&&&&&&&&&&new_list&&&&&&&&&&&&')
     list_ = List.objects.create()
     Item.objects.create(text=request.POST['item_text'],list=list_)
-    return redirect('/lists/the-only-list-in-the-world/')
+    return redirect(f'/lists/{list_.id}/')
 
 def home_page(request):
+    print('&&&&&&&&&&home_page&&&&&&&&&&&&')
     return render(request,'home.html')
