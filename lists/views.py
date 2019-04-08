@@ -74,7 +74,7 @@ def view_list(request,list_id):
     list_ = List.objects.get(id=list_id)
     items = Item.objects.filter(list=list_)
     return render(request, 'list.html', {"items": items})
-
+    # return render(request, 'list.html', {"list": list_})
 # ======================test14=======================
 def new_list(request):
     print('&&&&&&&&&&new_list&&&&&&&&&&&&')
@@ -85,3 +85,10 @@ def new_list(request):
 def home_page(request):
     print('&&&&&&&&&&home_page&&&&&&&&&&&&')
     return render(request,'home.html')
+
+# ======================test17=======================
+def add_item(request,list_id):
+    print('&&&&&&&&&&add_item&&&&&&&&&&&&')
+    list_ = List.objects.get(id=list_id)
+    Item.objects.create(text=request.POST['item_text'],list=list_)
+    return redirect(f'/lists/{list_.id}/')
