@@ -72,9 +72,9 @@ from lists.models import Item,List
 def view_list(request,list_id):
     print('&&&&&&&&&&view_list&&&&&&&&&&&&')
     list_ = List.objects.get(id=list_id)
-    items = Item.objects.filter(list=list_)
-    return render(request, 'list.html', {"items": items})
-    # return render(request, 'list.html', {"list": list_})
+    # items = Item.objects.filter(list=list_)
+    # return render(request, 'list.html', {"items": list_})
+    return render(request, 'list.html', {"list": list_})
 # ======================test14=======================
 def new_list(request):
     print('&&&&&&&&&&new_list&&&&&&&&&&&&')
