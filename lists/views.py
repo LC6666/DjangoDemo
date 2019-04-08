@@ -60,16 +60,23 @@ from lists.models import Item
 #     return render(request,'home.html',{"items":items})
 
 # ======================test11=======================
-def home_page(request):
-    if request.method=='POST':
-        Item.objects.create(text=request.POST['item_text'])
-        return redirect('/lists/the-only-list-in-the-world/')
-    # items = Item.objects.all()
-    # return render(request,'home.html',{"items":items})
-    return render(request,'home.html')
+# def home_page(request):
+#     if request.method=='POST':
+#         Item.objects.create(text=request.POST['item_text'])
+#         return redirect('/lists/the-only-list-in-the-world/')
+#     # items = Item.objects.all()
+#     # return render(request,'home.html',{"items":items})
+#     return render(request,'home.html')
 
 # ======================test12=======================
 def view_list(request):
     items = Item.objects.all()
     return render(request, 'list.html', {"items": items})
 
+# ======================test14=======================
+def new_list(request):
+    Item.objects.create(text=request.POST['item_text'])
+    return redirect('/lists/the-only-list-in-the-world/')
+
+def home_page(request):
+    return render(request,'home.html')
